@@ -1,0 +1,15 @@
+.list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card-img{width:100%;height:160px;object-fit:cover;display:block}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--ring);background:#0d1327;color:#e5e7eb;font-size:12px}
+.kv{display:flex;gap:8px;align-items:center}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:10px;border-bottom:1px solid var(--ring);text-align:left}
+.section{margin:22px 0}
+
+/* Admin */
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin:12px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.stat-card{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:12px}
+.stat-label{font-size:12px;color:var(--muted)}
+.stat-value{font-weight:700;font-size:20px}
+.order-card .badge{margin-right:8px}

@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body, #root { @apply h-full; }
+  body { @apply bg-slate-950 text-slate-100 m-0 font-sans; }
+}
+
+@layer components {
+  /* Layout */
+  .app-shell { @apply min-h-screen flex flex-col; }
+  .app-main { @apply grow; }
+  .container { @apply max-w-5xl mx-auto px-6 md:max-w-4xl sm:px-4; }
+
+  /* Typography helpers */
+  .muted { @apply text-slate-400; }
+  .link { @apply text-white hover:text-sky-400 no-underline; }
+
+  /* Buttons */
+  .btn { @apply inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-600 text-white px-3 py-2 transition; }
+  .btn.outline { @apply bg-transparent border border-slate-700 text-slate-100 hover:border-slate-500; }
+  .btn.danger { @apply bg-rose-500 hover:bg-rose-600; }
+  .btn.success { @apply bg-emerald-500 hover:bg-emerald-600; }
+
+  /* Forms */
+  .input, .select, .textarea { @apply w-full px-3 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-100 outline-none focus:border-sky-500; }
+
+  /* Cards */
+  .card { @apply bg-slate-900/60 border border-slate-700 rounded-xl overflow-hidden h-full flex flex-col; }
+  .card-body { @apply p-4 flex flex-col gap-2 grow; }
+  .card-grid { @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch; }
+  .card-img { @apply w-full h-44 object-cover block; }
+  .card-img.placeholder { @apply w-full h-44 bg-slate-800; }
+  .clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Flex/grid utils */
+  .row { @apply flex items-center gap-3; }
+  .space-between { @apply flex items-center justify-between; }
+  .grid-2 { @apply grid gap-3 md:grid-cols-2; }
+
+  /* Spacing helpers (compat) */
+  .mb-2 { @apply mb-2; }
+  .mb-3 { @apply mb-3; }
+  .mb-4 { @apply mb-4; }
+  .mt-2 { @apply mt-2; }
+  .mt-3 { @apply mt-3; }
+  .mt-4 { @apply mt-4; }
+  .py-2 { @apply py-2; }
+
+  /* Other helpers */
+  .error-text { @apply text-rose-500; }
+  .flex-1 { @apply grow; }
+  .justify-end { @apply justify-end; }
+  .items-end { @apply items-end; }
+  .border-b { @apply border-b border-slate-700; }
+  .avatar { @apply w-10 h-10 rounded-full object-cover; }
+  .badge { @apply inline-block px-2 py-0.5 rounded-full border border-slate-700 bg-slate-800 text-slate-100 text-xs; }
+
+  /* Footer */
+  .site-footer { @apply border-t border-slate-700 bg-slate-900/60 mt-10; }
+  .footer-inner { @apply flex items-center justify-between gap-3 py-4; }
+  .footer-brand { @apply font-bold; }
+  .footer-links { @apply flex gap-3; }
+  .footer-copy { @apply text-slate-400 text-sm; }
+
+  /* Navbar */
+  .navbar { @apply sticky top-0 z-20 backdrop-blur bg-slate-900/70 border-b border-slate-700; }
+  .navbar-inner { @apply container flex items-center gap-4 py-3 flex-wrap; }
+  .brand { @apply font-bold tracking-wide; }
+  .nav-spacer { @apply ml-auto; }
+  .nav-link { @apply text-slate-100 no-underline px-2 py-1 rounded-md hover:bg-slate-800; }
+  .user-menu { @apply relative; }
+  .user-trigger { @apply flex items-center gap-2 bg-transparent border border-slate-700 px-3 py-1.5 rounded-full text-slate-100; }
+  .avatar-fallback { @apply w-10 h-10 rounded-full flex items-center justify-center bg-slate-800 border border-slate-700; }
+  .user-name { @apply font-medium; }
+  .menu { @apply absolute right-0 top-12 bg-slate-900 border border-slate-700 rounded-xl min-w-[230px] shadow-xl p-2; }
+  .menu-header { @apply flex items-center gap-2 p-2 border-b border-slate-700; }
+  .menu-title { @apply font-semibold; }
+  .menu-sub { @apply text-xs text-slate-400; }
+  .menu-item { @apply block w-full text-left bg-transparent border-0 text-slate-100 no-underline px-3 py-2 rounded-md hover:bg-slate-800; }
+
+  /* Checkout */
+  .checkout { @apply max-w-4xl mx-auto; }
+  .payment-card { @apply grid gap-4 md:grid-cols-[1.2fr,0.8fr] sm:grid-cols-1; }
+  .payment-methods { @apply flex gap-2; }
+  .pill { @apply px-3 py-2 border border-slate-700 rounded-full bg-slate-900 cursor-pointer; }
+  .pill.active { @apply border-sky-500 ring-2 ring-sky-500/20; }
+  .verify-row { @apply flex items-center gap-2; }
+  .summary { @apply bg-slate-900 border border-slate-700 rounded-xl p-3; }
+  .summary-row { @apply flex justify-between py-1.5; }
+
+  /* Toasts */
+  .toast-container { @apply fixed top-4 right-4 flex flex-col gap-2 z-50; }
+  .toast { @apply px-3 py-2 rounded-lg border border-slate-700 bg-slate-900 shadow-xl; }
+  .toast.success { @apply border-emerald-900/50 bg-emerald-900/20; }
+  .toast.error { @apply border-rose-900/50 bg-rose-900/20; }
+  .toast.info { @apply border-slate-700 bg-slate-800/50; }
+
+  /* Loader */
+  .spinner { @apply inline-block w-4 h-4 border-2 border-slate-300/30 border-t-slate-200 rounded-full animate-spin; }
+
+  /* Modal */
+  .modal-backdrop { @apply fixed inset-0 bg-black/55 flex items-center justify-center z-50 p-4; }
+  .modal-card { @apply w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-xl shadow-2xl p-4; }
+  .btn-reset { @apply bg-transparent border-0 text-inherit p-0 cursor-pointer; }
+
+  /* Responsive helpers */
+  .hide-mobile { @apply block sm:block md:block; }
+  .show-mobile { @apply hidden sm:hidden md:hidden; }
+  @media (max-width: 768px) {
+    .hide-mobile { display: none; }
+    .show-mobile { display: initial; }
+  }
+}
