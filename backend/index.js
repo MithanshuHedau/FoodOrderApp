@@ -5,11 +5,36 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
-// Enable CORS for frontend
+// Enable CORS for frontend (localhost, configured FRONTEND_URL, and *.vercel.app)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.FRONTEND_URL, // e.g. https://your-app.vercel.app
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000"],
+    origin: (origin, callback) => {
+      // Allow non-browser requests (e.g., curl) where origin is undefined
+      if (!origin) return callback(null, true);
+      let host = origin;
+      try {
+        host = new URL(origin).hostname;
+      } catch (_) {
+        // keep as is
+      }
+      const isAllowed =
+        allowedOrigins.includes(origin) ||
+        // Allow any vercel.app subdomain
+        (typeof host === "string" && host.endsWith(".vercel.app")) ||
+        // Allow render apps if you call between services
+        (typeof host === "string" && host.endsWith(".onrender.com"));
+      if (isAllowed) return callback(null, true);
+      return callback(new Error(`CORS: Origin not allowed -> ${origin}`));
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 

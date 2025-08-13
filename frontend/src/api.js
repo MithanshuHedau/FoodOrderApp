@@ -2,7 +2,9 @@ import axios from "axios";
 
 // Simple axios instance with JWT support from localStorage
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+  // import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+  import.meta.env.VITE_API_BASE_URL ||
+  "https://zwiggatofoodorder.onrender.com/";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
